@@ -18,15 +18,15 @@ fi
 
 if ! unzip -v &> /dev/null; then
   echo "Unzip not found. Installing..."
-  sudo apt-get update
-  sudo apt-get install unzip
+  apt-get update
+  apt-get install unzip
 fi
 
 if ! command -v aws &> /dev/null; then
   echo "AWS CLI not found. Installing..."
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" || { echo "Failed to download AWS CLI"; exit 1; }
   unzip awscliv2.zip || { echo "Failed to unzip AWS CLI"; exit 1; }
-  sudo ./aws/install || { echo "AWS CLI installation failed"; exit 1; }
+  ./aws/install || { echo "AWS CLI installation failed"; exit 1; }
   rm -rf awscliv2.zip aws
   echo "AWS CLI installation complete."
 fi
