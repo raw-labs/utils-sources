@@ -16,6 +16,12 @@ if [ -z "$GITHUB_TOKEN" ]; then
   exit 1
 fi
 
+if ! unzip -v &> /dev/null; then
+  echo "Unzip not found. Installing..."
+  sudo apt-get update
+  sudo apt-get install unzip
+fi
+
 if ! command -v aws &> /dev/null; then
   echo "AWS CLI not found. Installing..."
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" || { echo "Failed to download AWS CLI"; exit 1; }
