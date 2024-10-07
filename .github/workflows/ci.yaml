@@ -9,9 +9,9 @@ on:
       - project/**
       - src/**
 
-defaults:
-  run:
-    shell: bash
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read
 
 env:
   GITHUB_TOKEN: ${{ secrets.READ_PACKAGES }}
@@ -32,6 +32,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.AWS_IAM_AUTOMATION_ROLE }}
+          role-to-assume: ${{ secrets.AWS_IAM_AUTOMATION_ROLE }}
           aws-region: eu-west-1
       - run: ci/test.sh
