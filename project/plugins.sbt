@@ -14,6 +14,8 @@ addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.12.0")
 
 addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.0.1")
 
+addSbtPlugin("nl.gn0s1s" %% "sbt-dotenv" % "3.0.0")
+
 resolvers += "RAW Labs GitHub Packages" at "https://maven.pkg.github.com/raw-labs/sbt-module-patcher"
 
 ThisBuild / credentials += Credentials(
