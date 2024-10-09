@@ -35,7 +35,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val buildSettings = Seq(
-  scalaVersion := "2.12.18",
+  scalaVersion := "2.12.20",
   isSnapshot := !isRelease,
   javacOptions ++= Seq(
     "-source",
@@ -132,7 +132,7 @@ lazy val root = (project in file("."))
       "com.dropbox.core" % "dropbox-core-sdk" % "5.4.5",
       "software.amazon.awssdk" % "s3" % "2.20.69" exclude ("commons-logging", "commons-logging"), // We use slf4j
       "org.postgresql" % "postgresql" % "42.5.4",
-      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude("com.google.protobuf", "protobuf-java"),
+      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude ("com.google.protobuf", "protobuf-java"),
       "com.microsoft.sqlserver" % "mssql-jdbc" % "7.0.0.jre10",
       "net.snowflake" % "snowflake-jdbc" % "3.13.33",
       "com.oracle.database.jdbc" % "ojdbc10" % "19.23.0.0",
