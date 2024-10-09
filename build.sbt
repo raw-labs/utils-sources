@@ -132,8 +132,8 @@ lazy val root = (project in file("."))
       "com.dropbox.core" % "dropbox-core-sdk" % "5.4.5",
       "software.amazon.awssdk" % "s3" % "2.20.69" exclude ("commons-logging", "commons-logging"), // We use slf4j
       "org.postgresql" % "postgresql" % "42.5.4",
-      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude("com.google.protobuf", "protobuf-java"),
-      "com.microsoft.sqlserver" % "mssql-jdbc" % "7.0.0.jre10",
+      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude ("com.google.protobuf", "protobuf-java"),
+      "com.microsoft.sqlserver" % "mssql-jdbc" % "7.4.1.jre12",
       "net.snowflake" % "snowflake-jdbc" % "3.13.33",
       "com.oracle.database.jdbc" % "ojdbc10" % "19.23.0.0",
       "com.teradata.jdbc" % "terajdbc" % "20.00.00.24"
