@@ -124,7 +124,7 @@ lazy val root = (project in file("."))
     publishSettings,
     libraryDependencies ++= Seq(
       "com.raw-labs" %% "utils-core" % "0.50.0" % "compile->compile;test->test",
-      "org.apache.httpcomponents.client5" % "httpclient5" % "5.2.1",
+      "org.apache.httpcomponents.client5" % "httpclient5" % "5.2.3",
       "io.jsonwebtoken" % "jjwt-api" % "0.11.5",
       "io.jsonwebtoken" % "jjwt-impl" % "0.11.5",
       "com.github.jwt-scala" %% "jwt-core" % "9.4.4",
@@ -132,7 +132,7 @@ lazy val root = (project in file("."))
       "com.dropbox.core" % "dropbox-core-sdk" % "5.4.5",
       "software.amazon.awssdk" % "s3" % "2.20.69" exclude ("commons-logging", "commons-logging"), // We use slf4j
       "org.postgresql" % "postgresql" % "42.5.4",
-      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude("com.google.protobuf", "protobuf-java"),
+      "com.mysql" % "mysql-connector-j" % "8.1.0" exclude ("com.google.protobuf", "protobuf-java"),
       "com.microsoft.sqlserver" % "mssql-jdbc" % "7.0.0.jre10",
       "net.snowflake" % "snowflake-jdbc" % "3.13.33",
       "com.oracle.database.jdbc" % "ojdbc10" % "19.23.0.0",
