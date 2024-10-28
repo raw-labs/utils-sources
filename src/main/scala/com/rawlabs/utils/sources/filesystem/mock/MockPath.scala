@@ -68,6 +68,15 @@ class MockPath(val delayMillis: Long, val delegate: FileSystemLocation) extends 
     delegate.lsWithMetadata()
   }
 
-  dsads
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: MockPath => delayMillis == other.delayMillis && delegate == other.delegate
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(delayMillis, delegate).hashCode()
+  }
 
 }
