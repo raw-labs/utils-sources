@@ -43,4 +43,15 @@ class InMemoryByteStreamLocation(val data: Array[Byte]) extends ByteStreamLocati
 
   override def testAccess(): Unit = {}
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: InMemoryByteStreamLocation => data.sameElements(other.data)
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    data.hashCode()
+  }
+
 }

@@ -72,4 +72,16 @@ class S3Path private (cli: S3FileSystem, val path: String)(implicit settings: Ra
     cli.listContentsWithMetadata(path).map { case (npath, meta) => (new S3Path(cli, npath), meta) }
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: S3Path =>
+        bucket == other.bucket && region == other.region && path == other.path && maybeAccessKey == other.maybeAccessKey && maybeSecretKey == other.maybeSecretKey
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(bucket, region, path, maybeAccessKey, maybeSecretKey).hashCode()
+  }
+
 }

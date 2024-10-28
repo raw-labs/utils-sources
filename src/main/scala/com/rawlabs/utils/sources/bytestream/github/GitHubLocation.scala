@@ -73,4 +73,17 @@ class GitHubLocation(val username: String, val repo: String, val file: String, v
   override def testAccess(): Unit = {
     httpClient.testAccess()
   }
+
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: GitHubLocation =>
+        username == other.username && repo == other.repo && file == other.file && maybeBranch == other.maybeBranch
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(username, repo, file, maybeBranch).hashCode()
+  }
+
 }

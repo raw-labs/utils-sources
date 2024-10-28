@@ -40,4 +40,17 @@ class OracleServerLocation(
       override def close(): Unit = it.close()
     }
   }
+
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: OracleServerLocation =>
+        host == other.host && port == other.port && dbName == other.dbName && username == other.username && password == other.password
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(host, port, dbName, username, password).hashCode()
+  }
+
 }

@@ -24,4 +24,15 @@ class SqliteServerLocation(val path: String)(
     throw new JdbcLocationException("no schemas in sqlite")
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SqliteServerLocation => path == other.path
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(path).hashCode()
+  }
+
 }

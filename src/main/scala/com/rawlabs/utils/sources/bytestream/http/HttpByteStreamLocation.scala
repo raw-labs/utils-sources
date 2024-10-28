@@ -77,4 +77,18 @@ class HttpByteStreamLocation(
     httpClient.getInputStreamWithStatus(safeUrl)
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: HttpByteStreamLocation =>
+        url == other.url && method == other.method && args.sameElements(other.args) && headers.sameElements(
+          other.headers
+        ) && maybeBody == other.maybeBody && expectedStatus.sameElements(other.expectedStatus)
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(url, method, args, headers, maybeBody, expectedStatus).hashCode()
+  }
+
 }
