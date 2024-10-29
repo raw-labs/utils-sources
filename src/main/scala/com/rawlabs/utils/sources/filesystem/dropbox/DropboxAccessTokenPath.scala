@@ -42,4 +42,15 @@ class DropboxAccessTokenPath(val accessToken: String, val path: String, dbxClien
     }
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: DropboxAccessTokenPath => accessToken == other.accessToken && path == other.path
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(accessToken, path).hashCode()
+  }
+
 }

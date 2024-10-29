@@ -54,4 +54,16 @@ class SqlServerSchemaLocation(
     }
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SqlServerSchemaLocation =>
+        host == other.host && port == other.port && dbName == other.dbName && username == other.username && password == other.password && schema == other.schema
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(host, port, dbName, username, password, schema).hashCode()
+  }
+
 }

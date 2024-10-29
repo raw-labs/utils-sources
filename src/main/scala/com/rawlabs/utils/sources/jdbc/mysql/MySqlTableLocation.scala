@@ -36,4 +36,16 @@ class MySqlTableLocation(cli: MySqlClient, val table: String) extends JdbcTableL
     )
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: MySqlTableLocation =>
+        host == other.host && port == other.port && dbName == other.dbName && username == other.username && password == other.password && table == other.table
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(host, port, dbName, username, password, table).hashCode()
+  }
+
 }

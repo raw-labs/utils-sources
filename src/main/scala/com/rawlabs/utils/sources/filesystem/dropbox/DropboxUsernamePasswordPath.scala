@@ -49,4 +49,16 @@ class DropboxUsernamePasswordPath(
     }
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: DropboxUsernamePasswordPath =>
+        username == other.username && password == other.password && path == other.path
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(username, password, path).hashCode()
+  }
+
 }

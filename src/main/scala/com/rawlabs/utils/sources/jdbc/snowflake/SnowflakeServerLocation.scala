@@ -58,4 +58,17 @@ class SnowflakeServerLocation(
       override def close(): Unit = it.close()
     }
   }
+
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SnowflakeServerLocation =>
+        dbName == other.dbName && username == other.username && password == other.password && accountIdentifier == other.accountIdentifier && parameters == other.parameters
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(dbName, username, password, accountIdentifier, parameters).hashCode()
+  }
+
 }

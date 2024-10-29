@@ -39,4 +39,16 @@ class SqliteSchemaLocation(
       override def close(): Unit = it.close()
     }
   }
+
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SqliteSchemaLocation => path == other.path
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(path).hashCode()
+  }
+
 }

@@ -26,4 +26,15 @@ class SqliteTableLocation(
     this(new SqliteClient(path), table)
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SqliteTableLocation => path == other.path && table == other.table
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(path, table).hashCode()
+  }
+
 }

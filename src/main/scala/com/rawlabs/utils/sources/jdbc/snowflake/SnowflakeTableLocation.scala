@@ -77,4 +77,16 @@ class SnowflakeTableLocation(
     )
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: SnowflakeTableLocation =>
+        dbName == other.dbName && username == other.username && password == other.password && accountIdentifier == other.accountIdentifier && parameters == other.parameters && schema == other.schema && table == other.table
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(dbName, username, password, accountIdentifier, parameters, schema, table).hashCode()
+  }
+
 }

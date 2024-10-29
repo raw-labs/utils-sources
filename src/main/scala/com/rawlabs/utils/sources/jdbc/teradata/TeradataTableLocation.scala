@@ -50,4 +50,16 @@ class TeradataTableLocation(
     )
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: TeradataTableLocation =>
+        host == other.host && port == other.port && dbName == other.dbName && username == other.username && password == other.password && schema == other.schema && table == other.table && parameters == other.parameters
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    Seq(host, port, dbName, username, password, schema, table, parameters).hashCode()
+  }
+
 }

@@ -51,4 +51,15 @@ class LocalPath(val pathName: String) extends FileSystemLocation {
     LocalFileSystem.listContentsWithMetadata(pathName).map { case (npath, meta) => (new LocalPath(npath), meta) }
   }
 
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case other: LocalPath => pathName == other.pathName
+      case _ => false
+    }
+  }
+
+  override def hashCode(): Int = {
+    pathName.hashCode()
+  }
+
 }
