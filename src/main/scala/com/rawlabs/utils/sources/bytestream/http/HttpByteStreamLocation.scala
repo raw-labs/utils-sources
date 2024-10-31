@@ -18,6 +18,7 @@ import com.rawlabs.utils.core.RawSettings
 import java.io.InputStream
 import java.net.{HttpURLConnection, MalformedURLException, URI, URISyntaxException}
 import java.nio.file.Path
+import java.util.Arrays
 
 final case class HttpResult(status: Int, is: InputStream, headers: Seq[(String, String)])
 
@@ -88,7 +89,14 @@ class HttpByteStreamLocation(
   }
 
   override def hashCode(): Int = {
-    Seq(url, method, args, headers, maybeBody, expectedStatus).hashCode()
+    Seq(
+      url,
+      method,
+      args.deep.hashCode,
+      headers.deep.hashCode,
+      maybeBody.map(Arrays.hashCode),
+      Arrays.hashCode(expectedStatus)
+    ).hashCode()
   }
 
 }
