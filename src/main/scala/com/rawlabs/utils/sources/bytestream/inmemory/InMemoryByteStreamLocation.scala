@@ -22,6 +22,7 @@ import com.rawlabs.utils.sources.bytestream.api.{
 
 import java.io.{ByteArrayInputStream, InputStream}
 import java.nio.file.Path
+import java.util.Arrays
 
 class InMemoryByteStreamLocation(val data: Array[Byte]) extends ByteStreamLocation {
 
@@ -51,7 +52,7 @@ class InMemoryByteStreamLocation(val data: Array[Byte]) extends ByteStreamLocati
   }
 
   override def hashCode(): Int = {
-    data.hashCode()
+    Arrays.hashCode(data)
   }
 
 }
